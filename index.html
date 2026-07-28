@@ -5,18 +5,17 @@
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-      /* 🌊 시원한 여름 바다 테마 색상으로 변경 */
+      /* 🌊 시원한 여름 바다 테마 색상 */
       :root { 
-        --poster-top: #e0f2fe;      /* 맑은 하늘색 */
-        --poster-bottom: #f0fdfa;   /* 얕은 바다의 민트색 */
+        --poster-top: #e0f2fe;      
+        --poster-bottom: #f0fdfa;   
         
-        --summer-soft: #0284c7;     /* 시원한 바다색 */
-        --summer-deep: #0369a1;     /* 깊은 바다색 */
-        --summer-light: #bae6fd;    /* 파도 거품같은 밝은 하늘색 */
-        --text-color: #334155;      /* 가독성 좋은 짙은 네이비/그레이 */
+        --summer-soft: #0284c7;     
+        --summer-deep: #0369a1;     
+        --summer-light: #bae6fd;    
+        --text-color: #334155;      
       }
       
-      /* 🌊 수채화 느낌의 여름 배경 */
       body { 
         font-family: 'Noto Sans KR', sans-serif; 
         background: linear-gradient(180deg, var(--poster-top) 0%, #e0f7fa 50%, var(--poster-bottom) 100%); 
@@ -69,7 +68,6 @@
       
       .main-container { max-width: 100%; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
       
-      /* 🌊 투명하고 시원한 느낌의 카드 디자인 */
       .card { 
         background: rgba(255, 255, 255, 0.85); 
         backdrop-filter: blur(8px); 
@@ -111,7 +109,6 @@
       .link-btn { display: flex; align-items: center; justify-content: center; padding: 12px 6px; text-decoration: none; border-radius: 15px; font-weight: bold; font-size: 0.95em; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.03); word-break: keep-all; line-height: 1.3; transition: all 0.2s; }
       .link-btn:hover { filter: brightness(0.98); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06); }
       
-      /* 버튼 색상은 기존의 알록달록한 디자인을 그대로 유지합니다 */
       .link-btn.cal { background: #fdf2f2; color: #d32f2f; border-left: 5px solid #ffcdd2; }
       .link-btn.repair { background: #f1f8fe; color: #1976d2; border-left: 5px solid #bbdefb; }
       .link-btn.moon { background: #f5f3ff; color: #7c4dff; border-left: 5px solid #ede9fe; }
@@ -206,7 +203,6 @@
           var cleanUrl = url.replace(/[.,)\]"']+$/, ""); 
           var fullUrl = cleanUrl.indexOf("http") === 0 ? cleanUrl : "https://" + cleanUrl;
           var trailing = url.substring(cleanUrl.length); 
-          // 버튼 색상도 파란 계열로 살짝 변경
           return "<a href=\"" + fullUrl + "\" target=\"_blank\" style=\"color: #0369a1; text-decoration: none; font-weight: bold; background: #e0f2fe; padding: 3px 8px; border-radius: 8px; display: inline-block; margin-top: 3px;\">[바로가기 🔗]</a>" + trailing;
         });
         return result;
@@ -272,18 +268,27 @@
                 }
                 wSection.innerHTML = currentHtml + hourlyHtml + `</div></div>`;
               }
-              document.getElementById('meal-list').innerHTML=data.meal.split('').join('<br>');
+              
+              document.getElementById('meal-list').innerHTML = (data.meal.includes("등록된") || data.meal.includes("없습니다")) 
+                ? data.meal 
+                : data.meal.split('').join('<br>');
+                
               if(data.lunchSupervisor){
                 var ls=document.getElementById('lunch-supervision');
                 ls.style.display='block';
                 ls.innerHTML="<small style='color:var(--summer-soft);'>[급식지도] "+data.lunchSupervisor.label+"</small><br><b style='color:var(--summer-deep);'>"+data.lunchSupervisor.names+"</b>";
               }
-              document.getElementById('tomorrow-meal-list').innerHTML=data.tomorrowMeal.split('').join('<br>');
+              
+              document.getElementById('tomorrow-meal-list').innerHTML = (data.tomorrowMeal.includes("등록된") || data.tomorrowMeal.includes("없습니다")) 
+                ? data.tomorrowMeal 
+                : data.tomorrowMeal.split('').join('<br>');
+                
               if(data.tomorrowLunchSupervisor){
                 var tls=document.getElementById('tomorrow-lunch-supervision');
                 tls.style.display='block';
                 tls.innerHTML="<small style='color:var(--summer-soft);'>[급식지도] "+data.tomorrowLunchSupervisor.label+"</small><br><b style='color:#64748b;'>"+data.tomorrowLunchSupervisor.names+"</b>";
               }
+              
               var al=document.getElementById('activity-list');
               al.innerHTML='';
               data.activities.forEach(function(item){
@@ -317,7 +322,8 @@
         updateClock();
         setInterval(updateClock,1000);
         fetchDashboardData();
-        setInterval(fetchDashboardData,1800000); // 30분마다 자동 갱신
+        // 💡 10분마다(600000 밀리초) 자동 갱신되도록 변경했습니다.
+        setInterval(fetchDashboardData, 600000); 
       });
     </script>
   </body>
