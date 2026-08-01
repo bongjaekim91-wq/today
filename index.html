@@ -3,6 +3,11 @@
   <head>
     <base target="_top">
     <meta charset="UTF-8">
+    
+    <!-- 🚀 속도 개선: 구글 서버와 미리 연결을 준비하여 로딩 속도 단축 -->
+    <link rel="preconnect" href="https://script.google.com">
+    <link rel="preconnect" href="https://script.googleusercontent.com">
+    
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
       /* 🌊 시원한 여름 바다 테마 색상 */
@@ -195,10 +200,10 @@
       }
       
       function fetchDashboardData() {
-        // 선생님이 새로 발급받으신 주소를 넣었습니다.
+        // 🚨 중요: 1단계 구글 스크립트 수정 후 '새 배포'를 통해 받은 새로운 주소를 아래에 덮어씌워 주세요!
+        // (아래 주소는 이전에 주신 주소입니다. 새로 배포하셨다면 꼭 바꿔주세요)
         var API_URL = "https://script.google.com/macros/s/AKfycbxxPvgfYl-h9X2vBalO3oD8OEOvemQmAIGSZe4ecGBX4zG2WKBBtJvZIm3dcA1isE1lAw/exec";
         
-        // 깃허브 통신 방식인 fetch를 사용합니다.
         fetch(API_URL)
           .then(response => {
             if (!response.ok) {
@@ -267,7 +272,6 @@
                 wSection.innerHTML = currentHtml + hourlyHtml + `</div></div>`;
               }
               
-              // 수정하신 줄바꿈 로직 그대로 적용
               var mealText = String(data.meal || "등록된 급식이 없습니다.");
               document.getElementById('meal-list').innerHTML = (mealText.includes("등록된") || mealText.includes("없습니다"))
                 ? mealText : mealText.replace(/\n/g, '<br>');
@@ -328,7 +332,7 @@
         updateClock();
         setInterval(updateClock, 1000);
         fetchDashboardData();
-        // 10분(600000ms)마다 갱신
+        // 10분(600000ms)마다 갱신 (캐시 시간과 동일하게 맞춰서 효율 극대화)
         setInterval(fetchDashboardData, 600000);
       });
     </script>
