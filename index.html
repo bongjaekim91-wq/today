@@ -6,88 +6,77 @@
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
       /* 🌊 시원한 여름 바다 테마 색상 */
-      :root { 
+      :root {
         --poster-top: #e0f2fe;      
         --poster-bottom: #f0fdfa;   
-        
         --summer-soft: #0284c7;     
         --summer-deep: #0369a1;     
         --summer-light: #bae6fd;    
         --text-color: #334155;      
       }
-      
-      body { 
-        font-family: 'Noto Sans KR', sans-serif; 
-        background: linear-gradient(180deg, var(--poster-top) 0%, #e0f7fa 50%, var(--poster-bottom) 100%); 
+      body {
+        font-family: 'Noto Sans KR', sans-serif;
+        background: linear-gradient(180deg, var(--poster-top) 0%, #e0f7fa 50%, var(--poster-bottom) 100%);
         background-attachment: fixed;
-        margin: 0; 
-        padding: 12px; 
-        color: var(--text-color); 
-        min-height: 100vh; 
-        box-sizing: border-box; 
+        margin: 0;
+        padding: 12px;
+        color: var(--text-color);
+        min-height: 100vh;
+        box-sizing: border-box;
       }
-      
       ::-webkit-scrollbar { display: none; }
-      
       .header { text-align: center; margin-bottom: 15px; padding-top: 10px; }
-      
-      .header h1 { 
-        font-family: 'Nanum Pen Script', cursive; 
-        font-size: 4.5em; 
-        color: var(--summer-soft); 
-        margin: 0; 
+      .header h1 {
+        font-family: 'Nanum Pen Script', cursive;
+        font-size: 4.5em;
+        color: var(--summer-soft);
+        margin: 0;
         text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.9);
         letter-spacing: 1px;
       }
-      
-      .date-time-container { 
-        display: inline-flex; 
-        align-items: center; 
-        justify-content: center; 
-        gap: 15px; 
-        background: rgba(255, 255, 255, 0.75); 
-        padding: 6px 30px; 
-        border-radius: 40px; 
-        box-shadow: 0 4px 12px rgba(2, 132, 199, 0.1); 
-        margin-top: 5px; 
+      .date-time-container {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        background: rgba(255, 255, 255, 0.75);
+        padding: 6px 30px;
+        border-radius: 40px;
+        box-shadow: 0 4px 12px rgba(2, 132, 199, 0.1);
+        margin-top: 5px;
       }
-      
       #today-date { font-size: 1.3em; color: var(--summer-deep); font-weight: 700; margin: 0; }
-      
-      #current-time { 
-        font-size: 2.2em; 
-        color: #ffffff; 
-        font-weight: 900; 
-        background: var(--summer-soft); 
-        padding: 4px 25px; 
-        border-radius: 30px; 
-        font-family: monospace; 
-        letter-spacing: -1px; 
-        margin: 0; 
+      #current-time {
+        font-size: 2.2em;
+        color: #ffffff;
+        font-weight: 900;
+        background: var(--summer-soft);
+        padding: 4px 25px;
+        border-radius: 30px;
+        font-family: monospace;
+        letter-spacing: -1px;
+        margin: 0;
       }
-      
       .main-container { max-width: 100%; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
-      
-      .card { 
-        background: rgba(255, 255, 255, 0.85); 
-        backdrop-filter: blur(8px); 
-        border-radius: 30px; 
-        padding: 20px; 
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04); 
-        border: 1px solid rgba(255, 255, 255, 0.8); 
-        transition: transform 0.3s ease; 
-        flex: 1; 
-        min-width: 250px; 
+      .card {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(8px);
+        border-radius: 30px;
+        padding: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        transition: transform 0.3s ease;
+        flex: 1;
+        min-width: 250px;
       }
-      
-      .card h2 { 
-        font-size: 1.4em; 
-        margin-top: 0; 
-        margin-bottom: 12px; 
-        color: var(--summer-soft); 
-        border-bottom: 2px dashed var(--summer-light); 
-        padding-bottom: 8px; 
-        white-space: nowrap; 
+      .card h2 {
+        font-size: 1.4em;
+        margin-top: 0;
+        margin-bottom: 12px;
+        color: var(--summer-soft);
+        border-bottom: 2px dashed var(--summer-light);
+        padding-bottom: 8px;
+        white-space: nowrap;
       }
       .top-row { display: flex; gap: 14px; flex-wrap: wrap; }
       .card#weather-section { padding: 20px; flex: 1; min-width: 300px; display: flex; flex-direction: column; justify-content: center; }
@@ -98,17 +87,14 @@
       .weather-temp { font-size: 1.5em; font-weight: bold; color: var(--summer-deep); }
       .weather-label { font-size: 0.8em; color: var(--summer-soft); }
       .weather-value { font-size: 0.95em; font-weight: bold; color: var(--text-color); }
-      
       .hourly-container { display: flex; justify-content: space-between; overflow-x: auto; margin-top: 15px; padding-top: 15px; border-top: 1px dashed var(--summer-light); gap: 10px; }
       .hourly-item { display: flex; flex-direction: column; align-items: center; min-width: 45px; }
       .hourly-time { font-size: 0.75em; color: var(--summer-soft); font-weight: bold; }
       .hourly-icon { width: 30px; height: 30px; margin: -2px 0; filter: opacity(0.8); }
       .hourly-temp { font-size: 0.85em; font-weight: 700; color: var(--summer-deep); }
-      
       .btn-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); grid-auto-flow: column; gap: 10px; margin-top: 12px; }
       .link-btn { display: flex; align-items: center; justify-content: center; padding: 12px 6px; text-decoration: none; border-radius: 15px; font-weight: bold; font-size: 0.95em; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.03); word-break: keep-all; line-height: 1.3; transition: all 0.2s; }
       .link-btn:hover { filter: brightness(0.98); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06); }
-      
       .link-btn.cal { background: #fdf2f2; color: #d32f2f; border-left: 5px solid #ffcdd2; }
       .link-btn.repair { background: #f1f8fe; color: #1976d2; border-left: 5px solid #bbdefb; }
       .link-btn.moon { background: #f5f3ff; color: #7c4dff; border-left: 5px solid #ede9fe; }
@@ -116,31 +102,26 @@
       .link-btn.meeting { background: #fdf4ff; color: #9c27b0; border-left: 5px solid #f5d0fe; }
       .link-btn.bell { background: #f8fafc; color: #546e7a; border-left: 5px solid #e2e8f0; }
       .link-btn.smart { background: #f0fdf4; color: #059669; border-left: 5px solid #dcfce7; }
-      .link-btn.check1 { background: #ecfeff; color: #0e7490; border-left: 5px solid #a5f3fc; } 
-      .link-btn.check2 { background: #fff1f2; color: #be123c; border-left: 5px solid #fecdd3; } 
-      
+      .link-btn.check1 { background: #ecfeff; color: #0e7490; border-left: 5px solid #a5f3fc; }
+      .link-btn.check2 { background: #fff1f2; color: #be123c; border-left: 5px solid #fecdd3; }
       .dashboard-row { display: flex; flex-wrap: wrap; gap: 14px; }
       .column-wrapper { display: flex; flex-direction: column; gap: 14px; flex: 1; min-width: 250px; }
       #dream-card { flex: 0.8; } #awake-card { flex: 1.2; }
-      
       .meal-content { font-size: 1.15em; line-height: 1.7; text-align: center; background: rgba(255,255,255,0.6); padding: 15px; border-radius: 20px; min-height: 110px; display: flex; flex-direction: column; justify-content: center; border: 1px solid #e0f2fe; color: var(--text-color);}
       .meal-content.tomorrow { background: rgba(255,255,255,0.4); border-color: #f1f5f9; color: #64748b;}
-      
       .activity-item { background: white; padding: 12px; margin-bottom: 8px; border-radius: 15px; border-left: 6px solid var(--summer-light); font-size: 1em; line-height: 1.4; box-shadow: 0 1px 4px rgba(0,0,0,0.03); }
-      .activity-item.lunch-sup { border-left-color: var(--summer-soft); margin-top: 10px; background: #f0f9ff; } 
+      .activity-item.lunch-sup { border-left-color: var(--summer-soft); margin-top: 10px; background: #f0f9ff; }
       .activity-item.lunch-sup-tomorrow { border-left-color: #cbd5e1; margin-top: 10px; background: #f8fafc; }
-      .activity-item.tomorrow { border-left-color: #99f6e4; color: #64748b; } 
-      .activity-item.night-today { border-left-color: #fde047; } 
-      .activity-item.night-tomorrow { border-left-color: #e2e8f0; } 
-      .activity-item.announcement { border-left-color: #fdba74; font-size: 1.05em; } 
+      .activity-item.tomorrow { border-left-color: #99f6e4; color: #64748b; }
+      .activity-item.night-today { border-left-color: #fde047; }
+      .activity-item.night-tomorrow { border-left-color: #e2e8f0; }
+      .activity-item.announcement { border-left-color: #fdba74; font-size: 1.05em; }
       .activity-item.awake { border-left-color: #a7f3d0; }
-      
       .loading { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 2.5em; color: var(--summer-soft); z-index: 100; font-family: 'Nanum Pen Script', cursive; transition: opacity 0.8s; }
       .loading.fade-out { opacity: 0; visibility: hidden; }
-      
-      @media (max-width: 900px) { 
-        .date-time-container { flex-direction: column; gap: 8px; padding: 15px; } 
-        .btn-grid { grid-template-columns: 1fr 1fr; grid-auto-flow: row; } 
+      @media (max-width: 900px) {
+        .date-time-container { flex-direction: column; gap: 8px; padding: 15px; }
+        .btn-grid { grid-template-columns: 1fr 1fr; grid-auto-flow: row; }
       }
     </style>
   </head>
@@ -149,7 +130,6 @@
       <span id="loader-text">🌊 시원한 파도를 타고 데이터를 가져오는 중...</span>
       <div id="loader-error" style="font-size:0.4em;color:#ffeded;margin-top:15px;font-family:'Noto Sans KR', sans-serif;"></div>
     </div>
-    
     <div class="header">
       <h1>🌊 오늘 서현</h1>
       <div class="date-time-container">
@@ -157,7 +137,6 @@
         <div id="current-time">오전 00:00:00</div>
       </div>
     </div>
-    
     <div class="main-container" style="display:none;" id="main-content">
       <div class="top-row">
         <div class="card" id="weather-section"></div>
@@ -176,7 +155,6 @@
           </div>
         </div>
       </div>
-      
       <div class="dashboard-row">
         <div class="column-wrapper">
           <div class="card"><h2>🧊 오늘 급식</h2><div id="meal-list" class="meal-content"></div><div id="lunch-supervision" class="activity-item lunch-sup" style="display:none;"></div></div>
@@ -193,43 +171,63 @@
     </div>
     
     <script>
-      function updateClock(){var now=new Date();var h=now.getHours();var m=String(now.getMinutes()).padStart(2,'0');var s=String(now.getSeconds()).padStart(2,'0');var ampm=h>=12?'오후':'오전';h=h%12||12;document.getElementById('current-time').textContent=ampm+" "+String(h).padStart(2,'0')+":"+m+":"+s;}
+      function updateClock(){
+        var now = new Date();
+        var h = now.getHours();
+        var m = String(now.getMinutes()).padStart(2,'0');
+        var s = String(now.getSeconds()).padStart(2,'0');
+        var ampm = h >= 12 ? '오후' : '오전';
+        h = h % 12 || 12;
+        document.getElementById('current-time').textContent = ampm + " " + String(h).padStart(2,'0') + ":" + m + ":" + s;
+      }
       
       function formatTextWithLinksForEvents(text) {
         if (!text) return "";
         var result = String(text);
-        var urlRegex = /((https?:\/\/|www\.)[^\s<]+)/g; 
+        var urlRegex = /((https?:\/\/|www\.)[^\s\x3c]+)/g; 
         result = result.replace(urlRegex, function(url) {
-          var cleanUrl = url.replace(/[.,)\]"']+$/, ""); 
+          var cleanUrl = url.replace(/[.,)\]"']+$/, "");
           var fullUrl = cleanUrl.indexOf("http") === 0 ? cleanUrl : "https://" + cleanUrl;
-          var trailing = url.substring(cleanUrl.length); 
+          var trailing = url.substring(cleanUrl.length);
           return "<a href=\"" + fullUrl + "\" target=\"_blank\" style=\"color: #0369a1; text-decoration: none; font-weight: bold; background: #e0f2fe; padding: 3px 8px; border-radius: 8px; display: inline-block; margin-top: 3px;\">[바로가기 🔗]</a>" + trailing;
         });
         return result;
       }
       
       function fetchDashboardData() {
-        var API_URL = "https://script.google.com/macros/s/AKfycbyt1po9y3UilUEtQfzWfsJ1IQpiVXU3_hCwiJie1Cdxz4SUsHK38Gk3OzS7ScQOTRx7gQ/exec";
-
+        // 선생님이 새로 발급받으신 주소를 넣었습니다.
+        var API_URL = "https://script.google.com/macros/s/AKfycbxxPvgfYl-h9X2vBalO3oD8OEOvemQmAIGSZe4ecGBX4zG2WKBBtJvZIm3dcA1isE1lAw/exec";
+        
+        // 깃허브 통신 방식인 fetch를 사용합니다.
         fetch(API_URL)
-          .then(response => response.json())
+          .then(response => {
+            if (!response.ok) {
+              throw new Error("서버에서 응답을 받지 못했습니다.");
+            }
+            return response.json();
+          })
           .then(data => {
             try {
-              document.getElementById('main-content').style.display='flex';
+              if (!data) throw new Error("데이터를 가져오지 못했습니다.");
+              document.getElementById('main-content').style.display = 'flex';
               document.getElementById('loader').classList.add('fade-out');
-              document.getElementById('today-date').textContent=data.date;
-              var t=new Date();
-              var d=["일","월","화","수","목","금","토"];
-              document.getElementById('today-event-title').innerHTML="⛵ 오늘 행사 <span style='font-size:0.7em;color:var(--summer-soft);'>"+(t.getMonth()+1)+"/"+t.getDate()+"("+d[t.getDay()]+")</span>";
-              var tm=new Date();
+              document.getElementById('today-date').textContent = data.date || "날짜 정보 없음";
+              
+              var t = new Date();
+              var d = ["일","월","화","수","목","금","토"];
+              document.getElementById('today-event-title').innerHTML = "⛵ 오늘 행사 <span style='font-size:0.7em;color:var(--summer-soft);'>" + (t.getMonth()+1) + "/" + t.getDate() + "(" + d[t.getDay()] + ")</span>";
+              
+              var tm = new Date();
               tm.setDate(t.getDate()+1);
-              document.getElementById('tomorrow-event-title').innerHTML="🌴 내일 행사 <span style='font-size:0.7em;color:var(--summer-soft);'>"+(tm.getMonth()+1)+"/"+tm.getDate()+"("+d[tm.getDay()]+")</span>";
-              document.getElementById('announcement-list').innerHTML=data.announcement;
-              document.getElementById('awake-geulmaru-list').innerHTML=data.awakeGeulmaru;
+              document.getElementById('tomorrow-event-title').innerHTML = "🌴 내일 행사 <span style='font-size:0.7em;color:var(--summer-soft);'>" + (tm.getMonth()+1) + "/" + tm.getDate() + "(" + d[tm.getDay()] + ")</span>";
+              
+              document.getElementById('announcement-list').innerHTML = data.announcement || "";
+              document.getElementById('awake-geulmaru-list').innerHTML = data.awakeGeulmaru || "";
               
               var wSection = document.getElementById('weather-section');
-              if (data.weather.error) {
-                wSection.innerHTML = `<h2>🌤️ 오늘 학교 날씨</h2><p style="color:#ef4444; font-weight:bold; text-align:center; margin:0;">⚠️ ${data.weather.error}</p>`;
+              if (!data.weather || data.weather.error) {
+                var wErr = (data.weather && data.weather.error) ? data.weather.error : "날씨 데이터를 불러올 수 없습니다.";
+                wSection.innerHTML = `<h2>🌤️ 오늘 학교 날씨</h2><p style="color:#ef4444; font-weight:bold; text-align:center; margin:0;">⚠️ ${wErr}</p>`;
               } else {
                 var currentHtml = `
                   <h2>🌤️ 오늘 학교 날씨</h2>
@@ -237,25 +235,25 @@
                     <div class="weather-current">
                       <div class="weather-item">
                         <span class="weather-label">현재 날씨</span>
-                        <img src="${data.weather.iconUrl}" class="weather-icon" alt="날씨">
-                        <span class="weather-value">${data.weather.desc}</span>
+                        <img src="${data.weather.iconUrl || ''}" class="weather-icon" alt="날씨">
+                        <span class="weather-value">${data.weather.desc || ''}</span>
                       </div>
                       <div class="weather-item">
                         <span class="weather-label">기온</span>
-                        <span class="weather-temp">${data.weather.temp}°C</span>
+                        <span class="weather-temp">${data.weather.temp || ''}°C</span>
                       </div>
                       <div class="weather-item">
                         <span class="weather-label">습도</span>
-                        <span class="weather-value">${data.weather.humidity}%</span>
+                        <span class="weather-value">${data.weather.humidity || ''}%</span>
                       </div>
                       <div class="weather-item">
                         <span class="weather-label">미세먼지</span>
-                        <span class="weather-value" style="color:${data.weather.aqiColor}">${data.weather.aqiText}</span>
+                        <span class="weather-value" style="color:${data.weather.aqiColor || '#000'}">${data.weather.aqiText || ''}</span>
                       </div>
                     </div>
                 `;
                 var hourlyHtml = `<div class="hourly-container">`;
-                if (data.weather.hourly) {
+                if (data.weather.hourly && Array.isArray(data.weather.hourly)) {
                   data.weather.hourly.forEach(function(h) {
                     hourlyHtml += `
                       <div class="hourly-item">
@@ -269,47 +267,55 @@
                 wSection.innerHTML = currentHtml + hourlyHtml + `</div></div>`;
               }
               
-              document.getElementById('meal-list').innerHTML = (data.meal.includes("등록된") || data.meal.includes("없습니다")) 
-                ? data.meal 
-                : data.meal.split('').join('<br>');
+              // 수정하신 줄바꿈 로직 그대로 적용
+              var mealText = String(data.meal || "등록된 급식이 없습니다.");
+              document.getElementById('meal-list').innerHTML = (mealText.includes("등록된") || mealText.includes("없습니다"))
+                ? mealText : mealText.replace(/\n/g, '<br>');
                 
-              if(data.lunchSupervisor){
-                var ls=document.getElementById('lunch-supervision');
-                ls.style.display='block';
-                ls.innerHTML="<small style='color:var(--summer-soft);'>[급식지도] "+data.lunchSupervisor.label+"</small><br><b style='color:var(--summer-deep);'>"+data.lunchSupervisor.names+"</b>";
+              if(data.lunchSupervisor && data.lunchSupervisor.label){
+                var ls = document.getElementById('lunch-supervision');
+                ls.style.display = 'block';
+                ls.innerHTML = "<small style='color:var(--summer-soft);'>[급식지도] " + data.lunchSupervisor.label + "</small><br><b style='color:var(--summer-deep);'>" + (data.lunchSupervisor.names || "") + "</b>";
               }
               
-              document.getElementById('tomorrow-meal-list').innerHTML = (data.tomorrowMeal.includes("등록된") || data.tomorrowMeal.includes("없습니다")) 
-                ? data.tomorrowMeal 
-                : data.tomorrowMeal.split('').join('<br>');
+              var tomorrowMealText = String(data.tomorrowMeal || "등록된 급식이 없습니다.");
+              document.getElementById('tomorrow-meal-list').innerHTML = (tomorrowMealText.includes("등록된") || tomorrowMealText.includes("없습니다"))
+                ? tomorrowMealText : tomorrowMealText.replace(/\n/g, '<br>');
                 
-              if(data.tomorrowLunchSupervisor){
-                var tls=document.getElementById('tomorrow-lunch-supervision');
-                tls.style.display='block';
-                tls.innerHTML="<small style='color:var(--summer-soft);'>[급식지도] "+data.tomorrowLunchSupervisor.label+"</small><br><b style='color:#64748b;'>"+data.tomorrowLunchSupervisor.names+"</b>";
+              if(data.tomorrowLunchSupervisor && data.tomorrowLunchSupervisor.label){
+                var tls = document.getElementById('tomorrow-lunch-supervision');
+                tls.style.display = 'block';
+                tls.innerHTML = "<small style='color:var(--summer-soft);'>[급식지도] " + data.tomorrowLunchSupervisor.label + "</small><br><b style='color:#64748b;'>" + (data.tomorrowLunchSupervisor.names || "") + "</b>";
               }
               
-              var al=document.getElementById('activity-list');
-              al.innerHTML='';
-              data.activities.forEach(function(item){
-                var div=document.createElement('div');
-                div.className='activity-item';
-                div.innerHTML=formatTextWithLinksForEvents(item);
+              var al = document.getElementById('activity-list');
+              al.innerHTML = '';
+              (data.activities || []).forEach(function(item){
+                var div = document.createElement('div');
+                div.className = 'activity-item';
+                div.innerHTML = formatTextWithLinksForEvents(item);
                 al.appendChild(div);
               });
-              var tal=document.getElementById('tomorrow-activity-list');
-              tal.innerHTML='';
-              data.tomorrowActivities.forEach(function(item){
-                var div=document.createElement('div');
-                div.className='activity-item tomorrow';
-                div.innerHTML=formatTextWithLinksForEvents(item);
+              
+              var tal = document.getElementById('tomorrow-activity-list');
+              tal.innerHTML = '';
+              (data.tomorrowActivities || []).forEach(function(item){
+                var div = document.createElement('div');
+                div.className = 'activity-item tomorrow';
+                div.innerHTML = formatTextWithLinksForEvents(item);
                 tal.appendChild(div);
               });
-              document.getElementById('today-supervision').innerHTML="<small style='color:var(--summer-soft);'>[오늘] "+data.todaySupervisors.label+"</small><br><b style='color:var(--summer-deep);'>"+data.todaySupervisors.names+"</b>";
-              document.getElementById('tomorrow-supervision').innerHTML="<small style='color:var(--summer-soft);'>[내일] "+data.tomorrowSupervisors.label+"</small><br><b style='color:#64748b;'>"+data.tomorrowSupervisors.names+"</b>";
+              
+              if(data.todaySupervisors && data.todaySupervisors.label) {
+                 document.getElementById('today-supervision').innerHTML = "<small style='color:var(--summer-soft);'>[오늘] " + data.todaySupervisors.label + "</small><br><b style='color:var(--summer-deep);'>" + (data.todaySupervisors.names || "") + "</b>";
+              }
+              if(data.tomorrowSupervisors && data.tomorrowSupervisors.label) {
+                 document.getElementById('tomorrow-supervision').innerHTML = "<small style='color:var(--summer-soft);'>[내일] " + data.tomorrowSupervisors.label + "</small><br><b style='color:#64748b;'>" + (data.tomorrowSupervisors.names || "") + "</b>";
+              }
+              
             } catch(e) {
               console.error(e);
-              document.getElementById('loader-error').textContent=e.message;
+              document.getElementById('loader-error').textContent = e.message;
             }
           })
           .catch(error => {
@@ -318,12 +324,12 @@
           });
       }
       
-      document.addEventListener("DOMContentLoaded",function(){
+      document.addEventListener("DOMContentLoaded", function(){
         updateClock();
-        setInterval(updateClock,1000);
+        setInterval(updateClock, 1000);
         fetchDashboardData();
-        // 💡 10분마다(600000 밀리초) 자동 갱신되도록 변경했습니다.
-        setInterval(fetchDashboardData, 600000); 
+        // 10분(600000ms)마다 갱신
+        setInterval(fetchDashboardData, 600000);
       });
     </script>
   </body>
