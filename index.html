@@ -332,8 +332,8 @@
         updateClock();
         setInterval(updateClock, 1000);
         fetchDashboardData();
-        // 10분(600000ms)마다 갱신 (캐시 시간과 동일하게 맞춰서 효율 극대화)
-        setInterval(fetchDashboardData, 600000);
+        // 5분(600000ms)마다 갱신 (캐시 시간과 동일하게 맞춰서 효율 극대화)
+        setInterval(fetchDashboardData, 300000);
       });
     </script>
   </body>
