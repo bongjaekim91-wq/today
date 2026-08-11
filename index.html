@@ -252,7 +252,7 @@
               if (!data) throw new Error("데이터를 가져오지 못했습니다.");
               document.getElementById('main-content').style.display = 'flex';
               document.getElementById('loader').classList.add('fade-out');
-              document.getElementById('today-date').textContent = data.date || "날짜 정보 없음";
+              // document.getElementById('today-date').textContent = data.date || "날짜 정보 없음";
               var t = new Date();
               var d = ["일","월","화","수","목","금","토"];
               document.getElementById('today-event-title').innerHTML = "⛵ 오늘 행사 <span style='font-size:0.7em;color:var(--summer-soft);'>" + (t.getMonth()+1) + "/" + t.getDate() + "(" + d[t.getDay()] + ")</span>";
